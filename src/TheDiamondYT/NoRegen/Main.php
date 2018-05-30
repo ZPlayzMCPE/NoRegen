@@ -13,15 +13,6 @@ class Main extends PluginBase implements Listener {
         $this->saveDefaultConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
-    
-    public function onPlayerJoin(PlayerJoinEvent $ev) {
-        $config = $this->getConfig()->getAll();
-        
-        if($config["message"]["show"]) {
-            $ev->getPlayer()->sendMessage($config["message"]["text"]);
-        }
-    }
-    
     public function onRegainHealth(EntityRegainHealthEvent $ev) {
         $reason = $ev->getRegainReason();
         $bypass = $ev->getPlayer()->hasPermission("noregen.bypass");
