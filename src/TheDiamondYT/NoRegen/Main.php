@@ -15,18 +15,17 @@ class Main extends PluginBase implements Listener {
     }
     public function onRegainHealth(EntityRegainHealthEvent $ev) {
         $reason = $ev->getRegainReason();
-        $bypass = $ev->getPlayer()->hasPermission("noregen.bypass");
         
-        if($reason === EntityRegainHealthEvent::CAUSE_REGEN && !$bypass) {
+        if($reason === EntityRegainHealthEvent::CAUSE_REGEN) {
             $ev->setCancelled(true);
         }
-        if($reason === EntityRegainHealthEvent::CAUSE_MAGIC && !$bypass) {
+        if($reason === EntityRegainHealthEvent::CAUSE_MAGIC) {
             $ev->setCancelled(true);
         }
-        if($reason === EntityRegainHealthEvent::CAUSE_CUSTOM && !$bypass) {
+        if($reason === EntityRegainHealthEvent::CAUSE_CUSTOM) {
             $ev->setCancelled(true);
         }
-        if($reason === EntityRegainHealthEvent::CAUSE_SATURATION && !$bypass) {
+        if($reason === EntityRegainHealthEvent::CAUSE_SATURATION) {
             $ev->setCancelled(true);
         }
     }
